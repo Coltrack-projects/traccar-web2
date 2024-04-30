@@ -15,11 +15,12 @@ import EventsDrawer from './EventsDrawer';
 import useFilter from './useFilter';
 import MainToolbar from './MainToolbar';
 import MainMap from './MainMap';
+import NavigationBar from '../common/layout/NavigationBar'
 import { useAttributePreference } from '../common/util/preferences';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: '100%',
+    height: 'calc(100% - 64px)',
   },
   sidebar: {
     pointerEvents: 'none',
@@ -28,8 +29,8 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('md')]: {
       position: 'fixed',
       left: 0,
-      top: 0,
-      height: `calc(100% - ${theme.spacing(3)})`,
+      top: theme.spacing(20),
+      height: `calc(100% - ${theme.spacing(23)})`,
       width: theme.dimensions.drawerWidthDesktop,
       margin: theme.spacing(1.5),
       zIndex: 3,
@@ -101,6 +102,9 @@ const MainPage = () => {
 
   return (
     <div className={classes.root}>
+      <div>
+        <NavigationBar />
+      </div>
       {desktop && (
         <MainMap
           filteredPositions={filteredPositions}
